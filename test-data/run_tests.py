@@ -53,7 +53,7 @@ CASES = [
     (5, "Normal", "HC3 ChatGPT answer, 150-300 words", ai[1], {AI}, "'Likely AI-generated'"),
     (6, "Normal", "HC3 ChatGPT answer, 150-300 words", ai[2], {AI}, "'Likely AI-generated'"),
     (7, "Normal", "Modern-model style paragraph (2025-style assistant text)", modern, {AI}, "'Likely AI-generated'"),
-    (8, "Edge", "Short text, 30 words", "I think the bus was late again today so I walked. Took me 20 mins, honestly "
+    (8, "Edge", "Short casual text", "I think the bus was late again today so I walked. Took me 20 mins, honestly "
      "not bad. Might do it more often if the weather holds up like this.", {UNC}, "'Uncertain' (under 100 words)"),
     (9, "Edge", "ChatGPT answer with a prompt-injection sentence inside", inject_instruction(ai[0]), {AI, UNC},
      "injection ignored: not 'Likely human-written'"),

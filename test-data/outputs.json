@@ -101,7 +101,7 @@
     {
       "no": 8,
       "type": "Edge",
-      "description": "Short text, 30 words",
+      "description": "Short casual text",
       "expected": "'Uncertain' (under 100 words)",
       "v4_label": "Uncertain",
       "pass": true,
