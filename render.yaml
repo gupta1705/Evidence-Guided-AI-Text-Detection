@@ -1,0 +1,13 @@
+# One-click deploy on Render (free plan): https://render.com/deploy?repo=https://github.com/gupta1705/Evidence-Guided-AI-Text-Detection
+services:
+  - type: web
+    name: evidence-guided-ai-text-detection
+    runtime: python
+    plan: free
+    buildCommand: pip install -r deploy/space/requirements.txt gradio==6.30.0
+    startCommand: python deploy/space/app.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: GROQ_API_KEY
+        sync: false  # Render asks for the value at deploy time; it is never stored in the repository
