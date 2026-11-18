@@ -69,8 +69,7 @@ MODULES = [
     ("4. Algorithm v2 (stylometric)", "20 features + word log-odds, logistic regression -> label and P(AI)",
      "Working", "Test split: 95.2 % accurate, labels 100 %"),
     ("5. LLM assessment (prompt P1 = V4)", "Builds the final prompt and calls gpt-oss-120b on Groq",
-     "Partly working", "Works locally with a Groq key; the public prototype has no key, so this button shows "
-     "a 'No API key' message there"),
+     "Working", "Prototype: Groq key stored as a hidden Space secret; locally: key in .env"),
     ("6. Answer validation", "Strict JSON schema, evidence grounding, invented-number check, flags shown",
      "Working", "src/parsing.py, src/grounding.py"),
     ("7. Gradio interface", "Paste text, compute statistics, ask the LLM, see label, evidence and flags",
@@ -326,8 +325,8 @@ def build_m2(team_id, prototype, reel, reel_seconds):
         "dictionary-word share and repetition that returns 'Uncertain - not natural text' before any call.",
         "Data scope: references and the v2 lexicon come from HC3 (2022/23 ChatGPT answers). Next: test on newer "
         "models and other genres (essays, reviews) before claiming wider use.",
-        "Online prototype has no API key, so the LLM button only works locally. Next: a rate-limited key for "
-        "evaluators.",
+        "The prototype runs on a free Groq key with a rate limit: many clicks in a short time can return a "
+        "'try again' error. Next: show the remaining quota and queue requests.",
     ):
         d.add_paragraph(item, style="List Bullet").runs[0].font.size = Pt(9.5)
     page_break(d)

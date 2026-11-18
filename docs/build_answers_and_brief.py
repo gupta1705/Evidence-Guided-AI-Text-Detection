@@ -37,10 +37,10 @@ def answers(prototype):
         ("16. Upload supporting document", "Upload GoldenGirls_ResearchAbstract.pdf (in docs/ of the repository)"),
         ("17. Number of test inputs in the test table", "14"),
         ("18. Total number of prompt versions", "5"),
-        ("19. Prototype status", "Some modules working"),
+        ("19. Prototype status", "All modules working"),
         ("20. Names of the working modules",
          "1. Text preparation\n2. Statistical features\n3. Algorithm v1 baseline\n4. Algorithm v2 (stylometric)\n"
-         "6. Answer validation\n7. Gradio interface"),
+         "5. LLM assessment (prompt P1 = V4)\n6. Answer validation\n7. Gradio interface"),
         ("21. Milestone 2 PDF", PDF),
         ("22. Main task of each team member",
          "S24CSEU0173 – Vedansh Gupta – Coordination and statistical integration: features, algorithm v1 baseline, "
@@ -53,10 +53,10 @@ def answers(prototype):
          "S24CSEU0114 – V Hasini – Interface and structured explanations: Gradio app, JSON and grounding checks, "
          "screenshots"),
         ("23. Anything the evaluator should know?",
-         "No login needed. The online prototype has no API key: 'Compute statistics' (features, algorithm v1 and v2 "
-         "labels) works online; 'Ask the LLM' shows a 'No API key' message there. To run the LLM prompt (P1 = V4): "
-         "clone the repository, put a free GROQ_API_KEY in .env (see .env.example), run pip install -r "
-         "requirements.txt and python -m src.app. The saved outputs of all 14 tests, including the raw LLM JSON, "
+         "No login needed. Paste a text, click 'Compute statistics' (features, algorithm v1 and v2 labels), then "
+         "'Ask the LLM' with provider groq, model openai/gpt-oss-120b and prompt version V4 (the defaults). The "
+         "LLM runs on a free Groq key, so many clicks in a short time may return a rate-limit message; wait a "
+         "minute and retry. The saved outputs of all 14 tests, including the raw LLM JSON, "
          "are in test-data/outputs.json."),
         ("24. Confirmation", "Tick 'I confirm' only after all five members have agreed to the Section 7 table"),
     ]
@@ -160,7 +160,7 @@ def build_brief(prototype):
                  "The demo must be a real run (mock-up screens get 0 for the demo part). Faces optional; vertical or "
                  "horizontal both fine.",
                  "Never show the .env file or any API key on screen.",
-                 "'Ask the LLM' needs a Groq key in .env on the recording laptop; the online prototype has no key."):
+                 "Record either the online prototype or the local app (a Groq key in .env on the recording laptop)."):
         d.add_paragraph(line, style="List Bullet")
     d.add_heading("Reference: first prompt (V0) text", level=2)
     d.add_paragraph(v0.split("===== USER =====")[1].split("TEXT TO ASSESS")[0].strip())
