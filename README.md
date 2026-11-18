@@ -3,6 +3,18 @@
 **Course:** Prompt Engineering (SCSE4041), Bennett University
 **Team Golden Girls:** Vedansh Gupta (lead, S24CSEU0173), Vartika Manish (S24CSEU0169), Vibhor (S24CSEU0176),
 Sahin Garg (S24CSEU0443), V Hasini (S24CSEU0114)
+**Faculty:** Saurabh R Srivastava
+
+**Prototype:** PROTOTYPE_LINK  ·  **Milestone 2 PDF:** [`docs/`](docs/)  ·  **Changes since Milestone 1:**
+[`CHANGELOG.md`](CHANGELOG.md)
+
+**Open and run it locally:** `pip install -r requirements.txt`, then `python -m src.app` and open
+http://127.0.0.1:7861. "Compute statistics" works offline; "Ask the LLM" needs a free Groq key in `.env`
+(`GROQ_API_KEY=...`, see `.env.example`).
+
+**Where things are:** `prompts/` (v1-v4 = prompt versions V0-V3, `final/` = V4, the prompt the solution uses),
+`src/` (the code), `test-data/` (Milestone 2 test inputs, saved outputs and the script that produced them),
+`docs/` (diagrams, screenshots, Milestone 2 PDF), `results/` (evaluation tables), `tests/` (unit tests).
 
 A statistical algorithm in plain Python computes reproducible evidence from an English text. A transparent
 statistical baseline turns that evidence into a score and a cautious label. A pretrained LLM then reads the
@@ -456,6 +468,9 @@ Findings so far (20 texts, so the 95% intervals are wide):
 ## Repository layout
 
 ```
+prompts/           saved prompt versions: v1..v4 = V0..V3, final/ = V4 (one .txt per prompt)
+test-data/         Milestone 2 test inputs, saved outputs, run_tests.py
+docs/              diagrams, screenshots, Milestone 2 PDF and abstract
 src/config.py      paths, seed, limits, labels, providers
 src/text_utils.py  normalize_text, fixed tokenizer, sentence splitter, truncate_words
 src/data.py        HC3 loading, cleaning, question-disjoint balanced splits, summary.json
