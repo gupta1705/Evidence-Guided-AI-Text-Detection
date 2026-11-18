@@ -1,0 +1,33 @@
+# Secrets
+.env
+
+# Generated data and models (rebuild with the commands in README.md)
+data/
+models/*
+!models/baseline.json
+!models/few_shot_examples.json
+!models/stylometry.json
+# Results: tables, charts and the run log are kept; the response cache and prompt store are large and local
+results/llm_cache.jsonl
+results/llm_prompts.jsonl
+# Offline mock checks (python -m src.evaluate --provider mock) write here, never into results/
+results_mock/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Tooling / OS
+.gradio/
+.ipynb_checkpoints/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Run logs
+logs/

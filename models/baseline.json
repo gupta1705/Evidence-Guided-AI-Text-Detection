@@ -1,0 +1,140 @@
+{
+  "features": [
+    "sentence_length_cv",
+    "mattr",
+    "repeated_trigram_rate",
+    "word_entropy"
+  ],
+  "reference_stats": {
+    "sentence_length_cv": {
+      "human_median": 0.497115187222301,
+      "human_q1": 0.40194080080749206,
+      "human_q3": 0.6086629845303535,
+      "ai_median": 0.3049801948324795,
+      "ai_q1": 0.23797184378488828,
+      "ai_q3": 0.38943469356930044,
+      "pooled_iqr": 0.21829086275379916,
+      "pooled_std": 0.1678439633507532,
+      "scale": 0.21829086275379916,
+      "n_human": 656,
+      "n_ai": 1414
+    },
+    "mattr": {
+      "human_median": 0.7922727272727272,
+      "human_q1": 0.7576407597124729,
+      "human_q3": 0.8234350256171402,
+      "ai_median": 0.7525782403825867,
+      "ai_q1": 0.7190293204553294,
+      "ai_q3": 0.7842596876807404,
+      "pooled_iqr": 0.0692951400064371,
+      "pooled_std": 0.05343544727426774,
+      "scale": 0.0692951400064371,
+      "n_human": 659,
+      "n_ai": 1414
+    },
+    "repeated_trigram_rate": {
+      "human_median": 0.014285714285714235,
+      "human_q1": 0.0059173669467786905,
+      "human_q3": 0.027780159478693278,
+      "ai_median": 0.0625,
+      "ai_q1": 0.035175879396984966,
+      "ai_q3": 0.1042171516802127,
+      "pooled_iqr": 0.06465382613222281,
+      "pooled_std": 0.0562899625266887,
+      "scale": 0.06465382613222281,
+      "n_human": 659,
+      "n_ai": 1414
+    },
+    "word_entropy": {
+      "human_median": 5.837564284943817,
+      "human_q1": 5.711143222368096,
+      "human_q3": 5.963334418541544,
+      "ai_median": 5.63304854170969,
+      "ai_q1": 5.49424906769578,
+      "ai_q3": 5.764944191711291,
+      "pooled_iqr": 0.2878817599220014,
+      "pooled_std": 0.22334828830720904,
+      "scale": 0.2878817599220014,
+      "n_human": 659,
+      "n_ai": 1414
+    }
+  },
+  "threshold": 0.06506858178053868,
+  "margin": 0.19156895211235384,
+  "min_words": 100,
+  "max_words": 300,
+  "created": "2026-10-12T15:33:49+00:00",
+  "seed": 42,
+  "score_definition": "mean scaled distance to human medians - mean scaled distance to AI medians (larger = more similar to the AI reference; not a probability)",
+  "scale_definition": "max(pooled IQR, 0.25 * pooled std, 1e-6)",
+  "reference_filter": "reference texts with >= 100 words (the texts the rule can label)",
+  "n_reference": 3000,
+  "n_reference_used": 2073,
+  "n_validation": 600,
+  "fit": {
+    "fitted_on": "validation texts with >= 100 words and >= 2 valid features",
+    "n_fit": 416,
+    "balanced_accuracy_at_threshold": 0.8340268886043534,
+    "margin": {
+      "coverage": 0.7884615384615384,
+      "decided_accuracy": 0.8536585365853658,
+      "target_met": true,
+      "target_accuracy": 0.85,
+      "min_coverage": 0.6,
+      "grid_size": 93,
+      "coverage_refers_to": "validation texts with >= 100 words and >= 2 valid features"
+    }
+  },
+  "validation_metrics": {
+    "with 100-word rule": {
+      "subset": "all",
+      "n": 600,
+      "n_human": 300,
+      "n_ai": 300,
+      "n_decided": 328,
+      "coverage": 0.5466666666666666,
+      "decided_accuracy": 0.8536585365853658,
+      "decided_f1": 0.8793969849246231,
+      "human_fpr": 0.03333333333333333,
+      "ai_recall": 0.5833333333333334
+    },
+    "without word rule": {
+      "subset": "all",
+      "n": 600,
+      "n_human": 300,
+      "n_ai": 300,
+      "n_decided": 442,
+      "coverage": 0.7366666666666667,
+      "decided_accuracy": 0.8461538461538461,
+      "decided_f1": 0.8433179723502304,
+      "human_fpr": 0.09333333333333334,
+      "ai_recall": 0.61
+    }
+  },
+  "validation_metrics_decidable_texts": {
+    "with 100-word rule": {
+      "subset": ">=100",
+      "n": 416,
+      "n_human": 132,
+      "n_ai": 284,
+      "n_decided": 328,
+      "coverage": 0.7884615384615384,
+      "decided_accuracy": 0.8536585365853658,
+      "decided_f1": 0.8793969849246231,
+      "human_fpr": 0.07575757575757576,
+      "ai_recall": 0.6161971830985915
+    },
+    "without word rule": {
+      "subset": ">=100",
+      "n": 416,
+      "n_human": 132,
+      "n_ai": 284,
+      "n_decided": 328,
+      "coverage": 0.7884615384615384,
+      "decided_accuracy": 0.8536585365853658,
+      "decided_f1": 0.8793969849246231,
+      "human_fpr": 0.07575757575757576,
+      "ai_recall": 0.6161971830985915
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "source_split": "validation",
+  "examples": [
+    {
+      "id": "q19898_a0",
+      "kind": "ai_like",
+      "true_label": 1,
+      "baseline_score": 0.7272891478267263,
+      "text": "A stop order is an order to buy or sell a security when its price reaches a certain point, which is known as the stop price. When the stop price is reached, the stop order becomes a market order and is executed at the best available price. The ask price, also known as the offer price, is the price at which a seller is willing to sell a security. It is the price that you would pay to buy the security. In other words, a stop order is a type of order that is used to enter or exit a trade, while the ask price is the price at which a trade can be executed. The stop price is typically set above the current market price for a stop-loss order, or below the current market price for a stop-limit order. The ask price is the price at which the security is currently being offered for sale in the market.",
+      "features": {
+        "word_count": 161,
+        "sentence_count": 7,
+        "analysed_words": 161,
+        "sentence_length_cv": 0.27888129590861677,
+        "mattr": 0.5916071428571429,
+        "repeated_trigram_rate": 0.1572327044025157,
+        "word_entropy": 4.969233409576028,
+        "truncated": false,
+        "short_window": false,
+        "length_controlled": true
+      },
+      "answer": {
+        "label": "Likely AI-generated",
+        "evidence": [
+          "sentence_length_cv is 0.2789, closer to the AI reference median 0.3050 than to the human reference median 0.4971.",
+          "repeated_trigram_rate is 0.1572, closer to the AI reference median 0.0625 than to the human reference median 0.0143.",
+          "word_entropy is 4.9692, closer to the AI reference median 5.6330 than to the human reference median 5.8376."
+        ],
+        "limitations": [
+          "These statistics show similarity to the AI reference texts; they do not prove who wrote the text.",
+          "A human reviewer should check the text before any decision."
+        ]
+      }
+    },
+    {
+      "id": "q23748_h0",
+      "kind": "human_like",
+      "true_label": 0,
+      "baseline_score": -0.727289147826726,
+      "text": "Hello and welcome to ‘Ask A Doctor' service. I have reviewed your query and here is my advice. Sex is largely what happens between two ears and two minds and not that happens between two legs. There are many possible reasons leading to erectile dysfunction and commonest is stress or performance anxiety. An occasional episode of erectile failure due to situational reasons like fatigue, tension or own ''pressure to 'perform' rather to enjoy'' is very common. This diminishes arousal level and hence erection too. This seems more likely with your partner. Both of you can go for counseling with sex therapist if this happens repeatedly. Hope I have answered your query. Let me know if I can assist you further. Regards,Dr. Chintan Raval",
+      "features": {
+        "word_count": 124,
+        "sentence_count": 12,
+        "analysed_words": 124,
+        "sentence_length_cv": 0.607360334960088,
+        "mattr": 0.8341333333333333,
+        "repeated_trigram_rate": 0.008196721311475419,
+        "word_entropy": 6.045113159965452,
+        "truncated": false,
+        "short_window": false,
+        "length_controlled": true
+      },
+      "answer": {
+        "label": "Likely human-written",
+        "evidence": [
+          "sentence_length_cv is 0.6074, closer to the human reference median 0.4971 than to the AI reference median 0.3050.",
+          "repeated_trigram_rate is 0.0082, closer to the human reference median 0.0143 than to the AI reference median 0.0625.",
+          "word_entropy is 6.0451, closer to the human reference median 5.8376 than to the AI reference median 5.6330."
+        ],
+        "limitations": [
+          "These statistics show similarity to the human reference texts; they do not prove who wrote the text.",
+          "A human reviewer should check the text before any decision."
+        ]
+      }
+    },
+    {
+      "id": "q16373_h1",
+      "kind": "uncertain",
+      "true_label": 0,
+      "baseline_score": 0.06775133282677998,
+      "text": "Ash covers the coals, insulating your feet. The real difference though is between walking and running. If you try to run, your foot presses harder into the ash covered coal, because you're trying to run. If you dig through the ash covered coal, and directly touch the coals, you'll get burned. Walking slowly allows a more even distribution of pressure, and less pressure overall, which ensures that your foot doesn't sink into the hot coals.",
+      "features": {
+        "word_count": 75,
+        "sentence_count": 5,
+        "analysed_words": 75,
+        "sentence_length_cv": 0.41952353926806063,
+        "mattr": 0.77,
+        "repeated_trigram_rate": 0.0273972602739726,
+        "word_entropy": 5.501761023656137,
+        "truncated": false,
+        "short_window": false,
+        "length_controlled": false
+      },
+      "answer": {
+        "label": "Uncertain",
+        "evidence": [
+          "word_count is 75, below the 100-word minimum, so the statistics are unstable.",
+          "sentence_length_cv is 0.4195, closer to the human reference median 0.4971 than to the AI reference median 0.3050.",
+          "mattr is 0.7700, closer to the AI reference median 0.7526 than to the human reference median 0.7923, so the features disagree."
+        ],
+        "limitations": [
+          "Short texts give unreliable statistics, so no authorship indication is possible.",
+          "Manual review is recommended."
+        ]
+      }
+    }
+  ]
+}

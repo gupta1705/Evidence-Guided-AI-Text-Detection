@@ -1,0 +1,42 @@
+{
+  "run_id": "20261013T063338Z-b87e89",
+  "finished": "2026-10-13T06:33:42+00:00",
+  "provider": "groq",
+  "requested_model": "openai/gpt-oss-120b",
+  "returned_models": [
+    "openai/gpt-oss-120b"
+  ],
+  "baseline_sha256": "2d343a213bfc826906b09b8356326ba64043069be41b4d749a9f49b381f3b5b2",
+  "few_shot_sha256": "f8cebad8803dda25de6a51b2577377e013c7b4008af4811927c1955f2dc149a8",
+  "prompts_file": "llm_prompts.jsonl (one line per distinct message list, keyed by messages_sha256)",
+  "distinct_prompts": 154,
+  "versions": [
+    "V0",
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+  ],
+  "n": 20,
+  "short_share": 0.2,
+  "robustness": {
+    "enabled": true,
+    "versions": [
+      "V0",
+      "V4"
+    ],
+    "n": 10,
+    "sets": [
+      "typo",
+      "injection",
+      "style"
+    ]
+  },
+  "bootstrap": 1000,
+  "seed": 42,
+  "temperature": 0.0,
+  "max_tokens": 800,
+  "reasoning_effort": "low",
+  "calls_logged": 160,
+  "cached_calls": 160
+}
