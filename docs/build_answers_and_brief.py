@@ -13,12 +13,12 @@ from docx.shared import Pt
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT.parent  # the "Prompt Engineering" folder
 REPO = "https://github.com/gupta1705/Evidence-Guided-AI-Text-Detection"
-PDF = f"{REPO}/blob/main/docs/M2_TeamID_StatisticalAITextDetection.pdf"
+PDF = f"{REPO}/blob/main/docs/M2_PE-B25-16_StatisticalAITextDetection.pdf"
 
 
 def answers(prototype):
     return [
-        ("1. Team ID", "(fill in: the Team ID given after Milestone 1)"),
+        ("1. Team ID", "PE-B25-16"),
         ("2. Team Name as Given in Milestone 1", "Golden Girls"),
         ("3. Project Title/Name", "Statistical AI Text Detection with Evidence-Guided Prompts"),
         ("4. Team Leader Name", "Vedansh Gupta"),
