@@ -85,7 +85,7 @@ def build_brief(prototype):
 
     d.add_heading("Links", level=2)
     for label, link in (("Repository (code, prompts, tests)", REPO),
-                        ("Prototype", prototype or "to be added (Hugging Face Space); until then record the local app"),
+                        ("Prototype", prototype or "to be added (Render); until then record the local app"),
                         ("Milestone 2 PDF", PDF),
                         ("All prompt versions as text", f"{REPO}/tree/main/prompts"),
                         ("Test inputs and saved outputs", f"{REPO}/tree/main/test-data"),
@@ -119,16 +119,20 @@ def build_brief(prototype):
          "\"Teachers can't tell if an essay was written by a student or by ChatGPT, and wrongly accusing a student "
          "is worse than missing AI. We built a tool that shows the evidence instead of a black-box verdict.\""),
         ("2. Prompt experiment (~35 s)",
-         "Show prompts/v1/P1_V0.txt on GitHub and one V0 answer (free text, not JSON). Then show "
-         "prompts/final/P1_V4.txt and the test-5 JSON answer (docs/screenshot_test5.png or a live run).",
-         "\"Our first prompt just asked the model to assess the text - it answered in prose, and 0 of 20 answers "
+         "Use before_after/1_format_fixed.txt (same ChatGPT text, both answers are real saved outputs): show "
+         "the input text, then the BEFORE answer (first prompt V0: nested objects, rejected by the format "
+         "check), then the AFTER answer (final prompt V4: clean JSON, correct label, every sentence quotes a "
+         "number). Optional extra: before_after/2_wrong_label_fixed.txt - the first prompt called a ChatGPT "
+         "text human; the final prompt refused to accuse and said Uncertain.",
+         "\"Our first prompt just asked the model to assess the text - each answer used its own JSON shape - nested objects, extra keys - and 0 of 20 answers "
          "were usable JSON. We added a role, rules that every claim must quote a real number, three worked examples "
          "and a strict JSON schema. The final prompt gives valid JSON 20 out of 20 times, and every piece of "
          "evidence quotes a number we computed.\""),
         ("3. Working demo (~50 s)",
-         "Screen-record the app (local: python -m src.app, open http://127.0.0.1:7861, provider groq, model "
-         "openai/gpt-oss-120b, version V4). Paste test 5 text (HC3 ChatGPT answer about trolls) -> Compute "
-         "statistics -> Ask the LLM. Then paste test 1 (a human answer) -> Ask the LLM.",
+         "Screen-record the prototype (link above; open it a minute early so it wakes up) with the defaults: "
+         "provider groq, model openai/gpt-oss-120b, prompt V4. Paste demo_texts/test5_ai_answer.txt -> Compute "
+         "statistics -> Ask the LLM. Then demo_texts/test1_human_answer.txt -> Ask the LLM. "
+         "assets/screenshot_test5.png and screenshot_test1.png show what the result should look like.",
          "\"Here's a real ChatGPT answer. Python computes the four statistics - all four sit closer to the AI "
          "range. Our algorithm says AI, and the LLM says Likely AI-generated, citing each number. Now a human "
          "answer: the numbers move to the human range, and the label follows. Every answer is checked: valid JSON, "
@@ -146,6 +150,15 @@ def build_brief(prototype):
         cells = t.add_row().cells
         for i, v in enumerate(row):
             cells[i].text = v
+
+    d.add_heading("Files in this folder", level=2)
+    for line in ("Reel_Brief.docx - this document",
+                 "before_after/ - two real before/after pairs for part 2 (input, first-prompt answer, final answer)",
+                 "demo_texts/ - the exact texts to paste in the demo (tests 5, 1 and 9)",
+                 "assets/ - screenshots of real runs (tests 1, 5, 9), the GitHub repository page, and four "
+                 "diagrams (prompt workflow, task decomposition, input-output, architecture) for B-roll",
+                 "prompts/ - the first prompt (V0) and the final prompt (V4) as text, for close-ups"):
+        d.add_paragraph(line, style="List Bullet")
 
     d.add_heading("Texts to paste in the demo", level=2)
     inputs = {c["no"]: c for c in json.loads((ROOT / "test-data" / "inputs.json").read_text(encoding="utf-8"))}
@@ -167,13 +180,36 @@ def build_brief(prototype):
     return d
 
 
+HANDOVER = OUT / "Reel_Handover"
+
+
+def handover(prototype):
+    """Reel_Handover/: brief, demo texts, screenshots, diagrams, prompts; zipped next to it.
+
+    before_after/ is written separately from results/llm_runs.jsonl (real V0 and V4 answers) and kept.
+    """
+    import shutil
+
+    inputs = {c["no"]: c for c in json.loads((ROOT / "test-data" / "inputs.json").read_text(encoding="utf-8"))}
+    for sub, files in (("assets", [*(ROOT / "docs").glob("screenshot_*.png"), *(ROOT / "docs").glob("diagram_*.png")]),
+                       ("prompts", [ROOT / "prompts" / "v1" / "P1_V0.txt", ROOT / "prompts" / "final" / "P1_V4.txt"])):
+        (HANDOVER / sub).mkdir(parents=True, exist_ok=True)
+        for f in files:
+            shutil.copy2(f, HANDOVER / sub / f.name)
+    (HANDOVER / "demo_texts").mkdir(exist_ok=True)
+    for no, name in ((5, "test5_ai_answer"), (1, "test1_human_answer"), (9, "test9_injection")):
+        (HANDOVER / "demo_texts" / f"{name}.txt").write_text(inputs[no]["text"], encoding="utf-8")
+    build_brief(prototype).save(HANDOVER / "Reel_Brief.docx")
+    shutil.make_archive(str(HANDOVER), "zip", HANDOVER)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--prototype", default="")
     a = ap.parse_args()
     build_answers(a.prototype).save(OUT / "M2_Form_Answers.docx")
-    build_brief(a.prototype).save(OUT / "Reel_Brief.docx")
-    print("wrote", OUT / "M2_Form_Answers.docx", "and", OUT / "Reel_Brief.docx")
+    handover(a.prototype)
+    print("wrote", OUT / "M2_Form_Answers.docx", "and", HANDOVER, "(+ .zip)")
 
 
 if __name__ == "__main__":

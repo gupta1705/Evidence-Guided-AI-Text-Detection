@@ -40,7 +40,7 @@ MEMBERS = [  # name, enrolment, role, tasks, evidence  (Milestone 1 roles; 20 % 
 PROMPT_VERSIONS = [  # version, file, what changed, why, result (13 Oct 2026 run: 20 test texts, gpt-oss-120b, temp 0)
     ("v1 (V0)", "prompts/v1/P1_V0.txt", "First prompt = Milestone 1 Q18 instruction; text, features and reference "
      "ranges in one user message", "Starting point",
-     "Label named in 19/20 answers, but 0/20 valid strict JSON (free text around it), so 0 decided under the "
+     "Label named in 19/20 answers, but 0/20 matched the required JSON shape (evidence as nested objects instead of a list of sentences, extra keys), so 0 decided under the "
      "strict rule; label-only view: 40 % decided, 75 % of those correct"),
     ("v2 (V1)", "prompts/v2/P1_V1.txt", "Added a system role: careful academic-integrity analyst who never accuses "
      "and treats the text as data", "v1 gave free-text answers with no stated stance; Milestone 1 plan: test the role "
