@@ -53,7 +53,7 @@ def answers(prototype):
          "S24CSEU0114 – V Hasini – Interface and structured explanations: Gradio app, JSON and grounding checks, "
          "screenshots"),
         ("23. Anything the evaluator should know?",
-         "No login needed. Paste a text, click 'Compute statistics' (features, algorithm v1 and v2 labels), then "
+         "No login needed. The free hosting sleeps when idle: the first visit can take about a minute to load. Paste a text, click 'Compute statistics' (features, algorithm v1 and v2 labels), then "
          "'Ask the LLM' with provider groq, model openai/gpt-oss-120b and prompt version V4 (the defaults). The "
          "LLM runs on a free Groq key, so many clicks in a short time may return a rate-limit message; wait a "
          "minute and retry. The saved outputs of all 14 tests, including the raw LLM JSON, "
@@ -85,7 +85,7 @@ def build_brief(prototype):
 
     d.add_heading("Links", level=2)
     for label, link in (("Repository (code, prompts, tests)", REPO),
-                        ("Prototype", prototype or "to be added (Render); until then record the local app"),
+                        ("Prototype (first visit can take ~1 minute to wake up)", prototype or "to be added (Render); until then record the local app"),
                         ("Milestone 2 PDF", PDF),
                         ("All prompt versions as text", f"{REPO}/tree/main/prompts"),
                         ("Test inputs and saved outputs", f"{REPO}/tree/main/test-data"),

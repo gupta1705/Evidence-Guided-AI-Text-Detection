@@ -5,7 +5,7 @@
 Sahin Garg (S24CSEU0443), V Hasini (S24CSEU0114)
 **Faculty:** Saurabh R Srivastava
 
-**Prototype:** PROTOTYPE_LINK  ·  **Milestone 2 PDF:** [`docs/`](docs/)  ·  **Changes since Milestone 1:**
+**Prototype:** https://evidence-guided-ai-text-detection.onrender.com/ (free plan: the first visit can take about a minute while it wakes up)  ·  **Milestone 2 PDF:** [`docs/`](docs/)  ·  **Changes since Milestone 1:**
 [`CHANGELOG.md`](CHANGELOG.md)
 
 **Open and run it locally:** `pip install -r requirements.txt`, then `python -m src.app` and open

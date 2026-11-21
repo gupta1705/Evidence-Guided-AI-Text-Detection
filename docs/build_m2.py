@@ -69,7 +69,7 @@ MODULES = [
     ("4. Algorithm v2 (stylometric)", "20 features + word log-odds, logistic regression -> label and P(AI)",
      "Working", "Test split: 95.2 % accurate, labels 100 %"),
     ("5. LLM assessment (prompt P1 = V4)", "Builds the final prompt and calls gpt-oss-120b on Groq",
-     "Working", "Prototype: Groq key stored as a hidden Space secret; locally: key in .env"),
+     "Working", "Prototype on Render: Groq key stored as a hidden Render secret; locally: key in .env"),
     ("6. Answer validation", "Strict JSON schema, evidence grounding, invented-number check, flags shown",
      "Working", "src/parsing.py, src/grounding.py"),
     ("7. Gradio interface", "Paste text, compute statistics, ask the LLM, see label, evidence and flags",
